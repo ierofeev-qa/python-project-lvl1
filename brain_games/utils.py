@@ -40,6 +40,13 @@ def check_answer(actual, expected):
         return False
 
 
+def is_prime(n):
+    for i in range(2, n):
+        if (n % i) == 0:
+            return False
+    return True
+
+
 def get_operation_result(number1, number2, operation):
     if operation == '+':
         return number1 + number2
@@ -145,6 +152,28 @@ def quiz_progression():
             return False
 
         if not check_answer(answer_int, correct_answer):
+            wrong_answer_message(answer, correct_answer)
+            return False
+        counter += 1
+    return True
+
+
+def quiz_prime():
+    counter = 0
+
+    print('Answer "yes" if given number is prime. Otherwise answer "no".')
+    while counter < 3:
+        number = random.randint(1, 99)
+
+        if is_prime(number):
+            correct_answer = 'yes'
+        else:
+            correct_answer = 'no'
+
+        answer = prompt.string(f'Question: {number} ')
+        print(f'Your answer: {answer}')
+
+        if not check_answer(answer, correct_answer):
             wrong_answer_message(answer, correct_answer)
             return False
         counter += 1
