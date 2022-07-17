@@ -118,3 +118,34 @@ def quiz_gcd():
             return False
         counter += 1
     return True
+
+
+def quiz_progression():
+    counter = 0
+
+    print('Find the greatest common divisor of given numbers.')
+    while counter < 3:
+        progression = []
+        start_number = random.randint(0, 99)
+        step = random.randint(1, 10)
+        for i in range(6):
+            progression.append(start_number)
+            start_number += step
+        index_of_random_element = random.randint(0, len(progression) - 1)
+        correct_answer = progression.pop(index_of_random_element)
+        progression.insert(index_of_random_element, '..')
+        question_string = ' '.join(str(i) for i in progression)
+
+        answer = prompt.string(f'Question: {question_string} ')
+        print(f'Your answer: {answer}')
+
+        answer_int = convert_to_int(answer)
+        if not answer_int:
+            wrong_answer_message(answer, correct_answer)
+            return False
+
+        if not check_answer(answer_int, correct_answer):
+            wrong_answer_message(answer, correct_answer)
+            return False
+        counter += 1
+    return True

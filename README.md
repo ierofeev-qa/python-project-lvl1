@@ -8,3 +8,5 @@
 <a href="https://asciinema.org/a/2eYiK60qL1MeTzMV0RDYL2WDb" target="_blank"><img src="https://asciinema.org/a/2eYiK60qL1MeTzMV0RDYL2WDb.svg" /></a>
 ### Brain-gcd example:
 <a href="https://asciinema.org/a/ezMuybftw55TXfE8X1SyJVk4V" target="_blank"><img src="https://asciinema.org/a/ezMuybftw55TXfE8X1SyJVk4V.svg" /></a>
+### Brain-progression example:
+<a href="https://asciinema.org/a/sboKgeqyMAN5itXxwDe03ZYwM" target="_blank"><img src="https://asciinema.org/a/sboKgeqyMAN5itXxwDe03ZYwM.svg" /></a>
