@@ -1,5 +1,6 @@
 import prompt
 import random
+import math
 
 
 def greet():
@@ -21,6 +22,22 @@ def wrong_answer_message(actual, expected):
         f"'{actual}' is wrong answer ;(. "
         f"Correct answer was '{expected}'"
     )
+
+
+def convert_to_int(data):
+    try:
+        int_data = int(data)
+    except ValueError:
+        return False
+    return int_data
+
+
+def check_answer(actual, expected):
+    if actual == expected:
+        print('Correct')
+        return True
+    else:
+        return False
 
 
 def get_operation_result(number1, number2, operation):
@@ -46,12 +63,11 @@ def quiz_even():
 
         answer = prompt.string(f'Question: {number} ')
         print(f'Your answer: {answer}')
-        if answer == correct_answer:
-            counter += 1
-            print('Correct!')
-        else:
+
+        if not check_answer(answer, correct_answer):
             wrong_answer_message(answer, correct_answer)
             return False
+        counter += 1
     return True
 
 
@@ -68,16 +84,37 @@ def quiz_calc():
         answer = prompt.string(f'Question: {number1} {operation} {number2} ')
         print(f'Your answer: {answer}')
 
-        try:
-            answer = int(answer)
-        except ValueError:
+        answer_int = convert_to_int(answer)
+        if not answer_int:
             wrong_answer_message(answer, correct_answer)
             return False
 
-        if answer == correct_answer:
-            counter += 1
-            print('Correct!')
-        else:
+        if not check_answer(answer_int, correct_answer):
             wrong_answer_message(answer, correct_answer)
             return False
+        counter += 1
+    return True
+
+
+def quiz_gcd():
+    counter = 0
+
+    print('Find the greatest common divisor of given numbers.')
+    while counter < 3:
+        number1 = random.randint(1, 99)
+        number2 = random.randint(1, 99)
+        correct_answer = math.gcd(number1, number2)
+
+        answer = prompt.string(f'Question: {number1} {number2} ')
+        print(f'Your answer: {answer}')
+
+        answer_int = convert_to_int(answer)
+        if not answer_int:
+            wrong_answer_message(answer, correct_answer)
+            return False
+
+        if not check_answer(answer_int, correct_answer):
+            wrong_answer_message(answer, correct_answer)
+            return False
+        counter += 1
     return True
